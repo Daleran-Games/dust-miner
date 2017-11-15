@@ -1,0 +1,9 @@
+Type1
+name,color
+car,red
+desk,brown
+cat,yellow
+Type2
+name,description,time
+entered,he entered here,0742
+exited,he exited here,0827
