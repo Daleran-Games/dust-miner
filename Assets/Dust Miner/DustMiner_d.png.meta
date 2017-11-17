@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: 52e59063c6ae30d479f83ddd59d3e817
+timeCreated: 1510882024
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: YellowShip_Engine_UL
+    21300002: YellowShip_Engine_UR
+    21300004: YellowShip_Engine_LL
+    21300006: YellowShip_Engine_LR
+    21300008: YellowShip_Fueltank
+    21300010: YellowShip_Cargo
+    21300012: YellowShip_Laser
+    21300014: YellowShip_Cockpit
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: YellowShip_Engine_UL
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 101
+        width: 24
+        height: 24
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 12}
+        - {x: -5, y: 12}
+        - {x: -12, y: 5}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 11}
+      physicsShape:
+      - - {x: 11, y: 12}
+        - {x: -5, y: 12}
+        - {x: -12, y: 5}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 11}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Engine_UR
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 100
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 3}
+        - {x: 4, y: 12}
+        - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 11, y: -12}
+        - {x: 12, y: -11}
+      physicsShape:
+      - - {x: 12, y: 3}
+        - {x: 4, y: 12}
+        - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 11, y: -12}
+        - {x: 12, y: -11}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Engine_LL
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 35
+        width: 24
+        height: 24
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -8}
+        - {x: -3, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -8}
+        - {x: -3, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Engine_LR
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 24
+        height: 24
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 4, y: -12}
+        - {x: 12, y: -3}
+        - {x: 12, y: 12}
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 4, y: -12}
+        - {x: 12, y: -3}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Fueltank
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 72
+        width: 16
+        height: 16
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Cargo
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 56
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 9, z: 10, w: 9}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Laser
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 64
+        width: 22
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 16}
+        - {x: -11, y: 16}
+        - {x: -11, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -13}
+        - {x: 11, y: 5}
+        - {x: 8, y: 13}
+      physicsShape:
+      - - {x: 7, y: 16}
+        - {x: -11, y: 16}
+        - {x: -11, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -13}
+        - {x: 11, y: 5}
+        - {x: 8, y: 13}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: YellowShip_Cockpit
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 15.5}
+        - {x: -16, y: -15.5}
+        - {x: 16, y: -15.5}
+        - {x: 16, y: 15.5}
+      physicsShape:
+      - - {x: -16, y: 15.5}
+        - {x: -16, y: -15.5}
+        - {x: 16, y: -15.5}
+        - {x: 16, y: 15.5}
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
