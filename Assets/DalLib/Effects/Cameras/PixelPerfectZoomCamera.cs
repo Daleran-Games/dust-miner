@@ -10,13 +10,9 @@ namespace DaleranGames.Effects
         [Header("Zoom Settings")]
         [SerializeField]
         protected int pixelsPerUnit = 32;
-        [SerializeField]
-        protected int maxScale = 10;
 
         [SerializeField]
-        protected bool AllowCustomScales = false;
-        [SerializeField]
-        protected List<float> customScales;
+        protected List<float> scales;
         protected int indexAtScaleOne;
         public int IndexAtScaleOne { get { return indexAtScaleOne; } }
 
@@ -79,39 +75,25 @@ namespace DaleranGames.Effects
 
         protected virtual float[] BuildSizeArray()
         {
-            float[] sizes = new float[maxScale];
-            for (int i = 0; i < sizes.Length; i++)
+            List<float> customSizes = new List<float>();
+
+            for (int i = 0; i < scales.Count; i++)
             {
-                sizes[i] = CalculateOrthographicSize(i + 1);
+                customSizes.Add(CalculateOrthographicSize(scales[i]));
             }
+            customSizes.Sort();
+            customSizes.Reverse();
+            float scaleOne = CalculateOrthographicSize(1f);
 
-            if (AllowCustomScales)
+            for (int i = 0; i < customSizes.Count; i++)
             {
-                List<float> customSizes = new List<float>(sizes);
-
-                for (int i = 0; i < customScales.Count; i++)
+                if (customSizes[i] == scaleOne)
                 {
-                    customSizes.Add(CalculateOrthographicSize(customScales[i]));
+                    indexAtScaleOne = i;
                 }
-                customSizes.Sort();
-                customSizes.Reverse();
-                float scaleOne = CalculateOrthographicSize(1f);
-
-                for (int i=0; i< customSizes.Count; i++)
-                {
-                    if (customSizes[i] == scaleOne)
-                    {
-                        indexAtScaleOne = i;
-                    }
-                }
-
-                return customSizes.ToArray();
             }
-            else
-            {
-                indexAtScaleOne = 0;
-                return sizes;
-            }
+
+            return customSizes.ToArray();
         }
     }
 }
