@@ -9,13 +9,6 @@ namespace DaleranGames.IO
     {
         protected MouseCursor() { }
 
-        public enum MouseButton
-        {
-            LMB = 0,
-            RMB = 1,
-            MMB = 2
-        }
-
         public enum MouseRenderer
         {
             None = 0,
@@ -59,23 +52,13 @@ namespace DaleranGames.IO
         Plane cursorPlane; // plane on which the cursor move on in 3D space.
         Vector3 lastWorldPosition = Vector3.zero; // last successful raycasted world position for persepctive cameras
 
-
         bool isOrthographic = true;
-
-        public MouseEvent LMBClick;
-        public MouseEvent RMBClick;
-        public MouseEvent MMBClick;
-
 
         private void Awake()
         {
             sprite = gameObject.GetRequiredComponent<Image>();
             trans = gameObject.GetRequiredComponent<RectTransform>();
             mouseCanvas = GetComponentInParent<Canvas>();
-
-            LMBClick = new MouseEvent(MouseButton.LMB);
-            RMBClick = new MouseEvent(MouseButton.RMB);
-            MMBClick = new MouseEvent(MouseButton.MMB);
 
             ChangeMouseRenderingMode(renderMode);
 
@@ -92,12 +75,7 @@ namespace DaleranGames.IO
         void Update()
         {
             MoveCursor(Input.mousePosition);
-
-            LMBClick.CheckForClicks();
-            RMBClick.CheckForClicks();
-            MMBClick.CheckForClicks();
         }
-
 
         void MoveCursor(Vector3 pos)
         {
@@ -173,50 +151,6 @@ namespace DaleranGames.IO
             }
         }
 
-        public class MouseEvent
-        {
-            int button;
-            public event Action MouseButtonPressed;
-            public event Action MouseButtonUp;
-            public event Action MouseButtonDown;
 
-            public MouseEvent(MouseButton button)
-            {
-                this.button = (int)button;
-            }
-
-            public MouseButton GetButtonType()
-            {
-                return (MouseButton)button;
-            }
-
-            public bool IsPressed()
-            {
-                return Input.GetMouseButton(button);
-            }
-
-            public bool IsMouseButtonDown()
-            {
-                return Input.GetMouseButtonDown(button);
-            }
-
-            public bool IsMouseButtonUp()
-            {
-                return Input.GetMouseButtonUp(button);
-            }
-
-            public void CheckForClicks()
-            {
-                if (IsPressed() && MouseButtonPressed != null)
-                    MouseButtonPressed();
-
-                if (IsMouseButtonDown() && MouseButtonDown != null)
-                    MouseButtonDown();
-
-                if (IsMouseButtonUp() && MouseButtonUp != null)
-                    MouseButtonUp();
-            }
-
-        }
     }
 }
