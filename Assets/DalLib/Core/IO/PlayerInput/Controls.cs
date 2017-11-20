@@ -15,58 +15,78 @@ namespace DaleranGames.IO
             MMB = 2
         }
 
-        public MouseEvent LMBClick;
-        public MouseEvent RMBClick;
-        public MouseEvent MMBClick;
-        public ControlAxis Scroll;
+        MouseEvent lmbClick;
+        public static MouseEvent LMBClick { get { return Instance.lmbClick; } }
+        MouseEvent rmbClick;
+        public static MouseEvent RMBClick { get { return Instance.rmbClick; } }
+        MouseEvent mmbClick;
+        public static MouseEvent MMBClick { get { return Instance.mmbClick; } }
+        ControlAxis scroll;
+        public static ControlAxis Scroll { get { return Instance.scroll; } }
+        Vector2 mouseVector;
+        public static Vector2 MouseVector { get { return Instance.mouseVector; } }
+        Vector2 screenCenter;
 
-        public ControlAxis Strafe;
-        public ControlAxis Throttle;
-        public ControlAxis Rotate;
+        ControlAxis strafe;
+        public static ControlAxis Strafe { get { return Instance.strafe; } }
+        ControlAxis throttle;
+        public static ControlAxis Throttle { get { return Instance.throttle; } }
+        ControlAxis rotate;
+        public static ControlAxis Rotate { get { return Instance.rotate; } }
 
-        public ControlButton Fire;
-        public ControlButton Ability;
-        public ControlButton Brake;
+        ControlButton fire;
+        public static ControlButton Fire { get { return Instance.fire; } }
+        ControlButton ability;
+        public static ControlButton Ability { get { return Instance.ability; } }
+        ControlToggle rcs;
+        public static ControlToggle RCS { get { return Instance.rcs; } }
 
-        public ControlButton Submit;
-        public ControlButton Cancel;
-        public ControlButton Menu;
+        ControlButton submit;
+        public static ControlButton Submit { get { return Instance.submit; } }
+        ControlButton cancel;
+        public static ControlButton Cancel { get { return Instance.cancel; } }
+        ControlButton menu;
+        public static ControlButton Menu { get { return Instance.menu; } }
 
         // Use this for initialization
         void Awake()
         {
-            LMBClick = new MouseEvent(MouseButton.LMB);
-            RMBClick = new MouseEvent(MouseButton.RMB);
-            MMBClick = new MouseEvent(MouseButton.MMB);
-            Scroll = new ControlAxis("Mouse ScrollWheel");
+            lmbClick = new MouseEvent(MouseButton.LMB);
+            rmbClick = new MouseEvent(MouseButton.RMB);
+            mmbClick = new MouseEvent(MouseButton.MMB);
+            scroll = new ControlAxis("Mouse ScrollWheel");
 
-            Strafe = new ControlAxis("Strafe");
-            Throttle = new ControlAxis("Throttle");
-            Rotate = new ControlAxis("Rotate");
+            screenCenter = new Vector2(Screen.width/2,Screen.height/2);
 
-            Fire = new ControlButton("Fire");
-            Ability = new ControlButton("Ability");
-            Brake = new ControlButton("Brake");
+            strafe = new ControlAxis("Strafe");
+            throttle = new ControlAxis("Throttle");
+            rotate = new ControlAxis("Rotate");
 
-            Submit = new ControlButton("Submit");
-            Cancel = new ControlButton("Cancel");
-            Menu = new ControlButton("Menu");
+            fire = new ControlButton("Fire");
+            ability = new ControlButton("Ability");
+            rcs = new ControlToggle("Brake", true);
+
+            submit = new ControlButton("Submit");
+            cancel = new ControlButton("Cancel");
+            menu = new ControlButton("Menu");
         }
 
         // Update is called once per frame
         void Update()
         {
-            LMBClick.CheckForClicks();
-            RMBClick.CheckForClicks();
-            MMBClick.CheckForClicks();
+            lmbClick.CheckForClicks();
+            rmbClick.CheckForClicks();
+            mmbClick.CheckForClicks();
 
-            Fire.CheckForPresses();
-            Ability.CheckForPresses();
-            Brake.CheckForPresses();
+            mouseVector = (Vector2)Input.mousePosition - screenCenter;
 
-            Submit.CheckForPresses();
-            Cancel.CheckForPresses();
-            Menu.CheckForPresses();
+            fire.CheckForPresses();
+            ability.CheckForPresses();
+            rcs.CheckToggleState();
+
+            submit.CheckForPresses();
+            cancel.CheckForPresses();
+            menu.CheckForPresses();
         }
 
         public class MouseEvent
@@ -116,34 +136,28 @@ namespace DaleranGames.IO
 
         public class ControlToggle
         {
-            bool keyState = false;
-            string name;
+            bool toggleState = false;
+            public bool ToggleState { get { return toggleState; } }
+
+            string axisName;
+            public string AxisName { get { return axisName; } }
+
             public event Action<bool> KeyToggled;
 
             public ControlToggle(string axisName, bool startingState)
             {
-                name = axisName;
-                keyState = startingState;
-            }
-
-            public string GetAxisName()
-            {
-                return name;
-            }
-
-            public bool GetToggleState()
-            {
-                return keyState;
+                this.axisName = axisName;
+                toggleState = startingState;
             }
 
             public void CheckToggleState()
             {
-                if (Input.GetButtonUp(name))
+                if (Input.GetButtonUp(axisName))
                 {
-                    keyState = !keyState;
+                    toggleState = !toggleState;
 
                     if (KeyToggled != null)
-                        KeyToggled(keyState);
+                        KeyToggled(toggleState);
                 }
             }
 
@@ -151,34 +165,31 @@ namespace DaleranGames.IO
 
         public class ControlButton
         {
-            string name;
+            string axisName;
+            public string AxisName { get { return axisName; } }
+
             public event Action ControlButtonPressed;
             public event Action ControlButtonDown;
             public event Action ControlButtonUp;
 
             public ControlButton(string axisName)
             {
-                name = axisName;
-            }
-
-            public string GetAxisName()
-            {
-                return name;
+                this.axisName = axisName;
             }
 
             public bool IsPressed()
             {
-                return Input.GetButton(name);
+                return Input.GetButton(axisName);
             }
 
             public bool IsDown()
             {
-                return Input.GetButtonDown(name);
+                return Input.GetButtonDown(axisName);
             }
 
             public bool IsUp()
             {
-                return Input.GetButtonUp(name);
+                return Input.GetButtonUp(axisName);
             }
 
             public void CheckForPresses()
@@ -196,43 +207,39 @@ namespace DaleranGames.IO
 
         public class ControlAxis
         {
-            string axis;
+            string axisName;
+            public string AxisName { get { return axisName; } }
+
+            public float Value { get { return Input.GetAxis(axisName); } }
+            public float RawValue { get { return Input.GetAxisRaw(axisName); } }
+            public bool IsInUse
+            {
+                get
+                {
+                    if (Input.GetAxis(axisName) != 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+
+            public bool IsPositiveAndInUse
+            {
+                get
+                {
+                    if (Input.GetAxis(axisName) > 0 && IsInUse)
+                        return true;
+                    else
+                        return false;
+                }
+            }
 
             public ControlAxis(string axisName)
             {
-                axis = axisName;
+                this.axisName = axisName;
             }
 
-            public string GetAxisName()
-            {
-                return axis;
-            }
 
-            public float GetAxisValue()
-            {
-                return Input.GetAxis(axis);
-            }
-
-            public float GetAxisRaw()
-            {
-                return Input.GetAxisRaw(axis);
-            }
-
-            public bool IsAxisInUse()
-            {
-                if (Input.GetAxis(axis) != 0)
-                    return true;
-                else
-                    return false;
-            }
-
-            public bool IsPositiveAndInUse()
-            {
-                if (Input.GetAxis(axis) > 0 && IsAxisInUse())
-                    return true;
-                else
-                    return false;
-            }
         }
     }
 }

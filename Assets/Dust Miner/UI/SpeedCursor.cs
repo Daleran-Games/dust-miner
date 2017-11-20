@@ -51,7 +51,7 @@ namespace DaleranGames.SquadronLeader
 
         void MoveAndRotate()
         {
-            Vector2 shipToCursor = trackedShip.transform.position - MouseCursor.Instance.WorldPosition;
+            Vector2 shipToCursor = trackedShip.transform.position - MouseCursor.WorldPosition;
             rect.localPosition = -shipToCursor.normalized * distanceFromCursor;
 
 

@@ -15,18 +15,10 @@ namespace DaleranGames.IO
             set { offset = value; }
         } 
 
-        MouseCursor cursor;
-
-        // Use this for initialization
-        void Start()
-        {
-            cursor = MouseCursor.Instance;
-        }
-
         // Update is called once per frame
         void LateUpdate()
         {
-            transform.position = cursor.WorldPosition + offset;
+            transform.position = MouseCursor.WorldPosition + offset;
         }
     }
 }

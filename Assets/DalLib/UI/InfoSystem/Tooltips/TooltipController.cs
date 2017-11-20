@@ -25,18 +25,13 @@ namespace DaleranGames.UI
 
         [SerializeField]
         bool isActive = false;
-        public bool IsActive { get { return isActive; } }
-
-        [SerializeField]
-        bool hexCursorOverride = false;
-        public bool HexCursorOverride { get { return hexCursorOverride; } set { hexCursorOverride = value; } }
+        public static bool IsActive { get { return instance.isActive; } }
 
         // Use this for initialization
         void Start()
         {
             tooltipRect.gameObject.SetActive(false);
             isActive = false;
-            hexCursorOverride = false;
             canvas = canvasRect.GetComponent<Canvas>();
             verticalLayout = tooltipRect.GetComponent<VerticalLayoutGroup>();
         }
@@ -52,7 +47,7 @@ namespace DaleranGames.UI
 
         void CheckTooltipAnchors()
         {
-            Vector3 mousePos = MouseCursor.Instance.ScreenPosition;
+            Vector3 mousePos = MouseCursor.ScreenPosition;
             float screenHalfX = Screen.width - tooltipRect.rect.width;
             float screenHalfY = tooltipRect.rect.height * 1.5f;
 
@@ -106,7 +101,6 @@ namespace DaleranGames.UI
         public void ShowTooltip(string text)
         {
                 isActive = true;
-                HexCursorOverride = true;
                 tooltipRect.gameObject.SetActive(true);
                 tooltipText.text = text;
         }
@@ -114,7 +108,6 @@ namespace DaleranGames.UI
         public void HideTooltip()
         {
                 isActive = false;
-                HexCursorOverride = false;
                 tooltipRect.gameObject.SetActive(false);
 
         }

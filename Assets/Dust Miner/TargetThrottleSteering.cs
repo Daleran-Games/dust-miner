@@ -66,14 +66,14 @@ namespace DaleranGames.SquadronLeader
 
         void SetUpScreenLimits()
         {
-            screenSpace = MouseCursor.Instance.ScreenCanvasRect;
+            screenSpace = MouseCursor.ScreenCanvasRect;
             stopPixels = (screenSpace.height * 0.5f) * stopCursorDistance;
             maxPixels = (screenSpace.height * 0.5f) * maxSpeedCursorDistance;
         }
 
         Vector2 CalculateDesiredVelocity()
         {
-            Vector2 targetDirection = MouseCursor.Instance.ScreenPosition - (Vector2)MainCamera.Instance.WorldToScreenPoint(transform.position);
+            Vector2 targetDirection = MouseCursor.ScreenPosition - (Vector2)MainCamera.Instance.WorldToScreenPoint(transform.position);
             float targetDistance = targetDirection.magnitude;
 
             if (targetDistance <= stopPixels)

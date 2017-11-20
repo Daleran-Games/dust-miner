@@ -32,13 +32,13 @@ namespace DaleranGames.IO
         [ReadOnly]
         [SerializeField]
         Vector2 screenPosition;  //For DEBUG only!!
-        public Vector2 ScreenPosition { get { return screenPosition; } }
-        public Rect ScreenCanvasRect { get { return mouseCanvas.pixelRect; } }
+        public static Vector2 ScreenPosition { get { return Instance.screenPosition; } }
+        public static Rect ScreenCanvasRect { get { return Instance.mouseCanvas.pixelRect; } }
         
         [ReadOnly]
         [SerializeField]
         Vector3 worldPosition;
-        public Vector3 WorldPosition { get { return worldPosition; } }
+        public static Vector3 WorldPosition { get { return Instance.worldPosition; } }
 
         [Header("Orthographic Camera Settings")]
         [SerializeField]
