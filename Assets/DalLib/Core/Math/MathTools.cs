@@ -84,6 +84,11 @@ namespace DaleranGames
             return trans.VectorToPoint(point).magnitude;
         }
 
+        public static Vector2 AverageVector(Vector2 first, Vector2 second)
+        {
+            return (first + second) * 0.5f;
+        }
+
         public static Vector2 AverageVector(Vector2[] vectors)
         {
             Vector2 resultVector = Vector2.zero;
@@ -94,6 +99,11 @@ namespace DaleranGames
             }
 
             return resultVector / vectors.Length;
+        }
+
+        public static Vector3 AverageVector(Vector3 first, Vector3 second)
+        {
+            return (first + second) * 0.5f;
         }
 
         public static Vector3 AverageVector(Vector3[] vectors)

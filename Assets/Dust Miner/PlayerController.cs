@@ -7,13 +7,15 @@ namespace DaleranGames.DustMiner
 {
     public class PlayerController : MonoBehaviour
     {
-        public float Thrust = 20f;
+        public Vector2 Thrust = new Vector2(5f, 10f);
+        public float RotationSpeed = 90f;
+        public float RotationDeadZone = 0.8f;
         public float RotationFactor = 1f;
 
         public Vector2 desiredTranslation;
         public Vector2 desiredDirection;
 
-        VectorPID steeringPID = new VectorPID(0.5f, 0.01f, 1.5f);
+        public Vector2 thrustDirection;
 
         Rigidbody2D rb;
 
@@ -37,7 +39,31 @@ namespace DaleranGames.DustMiner
 
         private void FixedUpdate()
         {
-            
+            Rotate();
+            Translate();
+        }
+
+        void Rotate()
+        {
+            if (Vector2.Angle(transform.up, desiredDirection) > RotationDeadZone)
+            {
+                if (Vector2.SignedAngle(transform.up, desiredDirection) > 0f)
+                {
+                    rb.angularVelocity = RotationSpeed;
+                }
+                else
+                    rb.angularVelocity = -RotationSpeed;
+            }
+            else
+                rb.angularVelocity = 0f;
+        }
+
+        void Translate()
+        {
+            Vector2 localVelocity = (Vector2)transform.InverseTransformDirection(rb.velocity).normalized;
+
+
+            //rb.AddRelativeForce(new Vector2(thrustDirection.x*Thrust.x,thrustDirection.y*Thrust.y));
         }
     }
 }

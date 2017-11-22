@@ -15,36 +15,54 @@ namespace DaleranGames.IO
             MMB = 2
         }
 
+        [Header("MouseControls")]
+        [SerializeField]
         MouseEvent lmbClick;
         public static MouseEvent LMBClick { get { return Instance.lmbClick; } }
+        [SerializeField]
         MouseEvent rmbClick;
         public static MouseEvent RMBClick { get { return Instance.rmbClick; } }
+        [SerializeField]
         MouseEvent mmbClick;
         public static MouseEvent MMBClick { get { return Instance.mmbClick; } }
+        [SerializeField]
         ControlAxis scroll;
         public static ControlAxis Scroll { get { return Instance.scroll; } }
+        [SerializeField]
         Vector2 mouseVector;
         public static Vector2 MouseVector { get { return Instance.mouseVector; } }
         Vector2 screenCenter;
 
+        [Header("Movement Controls")]
+        [SerializeField]
         ControlAxis strafe;
         public static ControlAxis Strafe { get { return Instance.strafe; } }
+        [SerializeField]
         ControlAxis throttle;
         public static ControlAxis Throttle { get { return Instance.throttle; } }
+        [SerializeField]
         ControlAxis rotate;
         public static ControlAxis Rotate { get { return Instance.rotate; } }
 
+        [Header("Actions Controls")]
+        [SerializeField]
         ControlButton fire;
         public static ControlButton Fire { get { return Instance.fire; } }
+        [SerializeField]
         ControlButton ability;
         public static ControlButton Ability { get { return Instance.ability; } }
+        [SerializeField]
         ControlToggle rcs;
         public static ControlToggle RCS { get { return Instance.rcs; } }
 
+        [Header("Menu Controls")]
+        [SerializeField]
         ControlButton submit;
         public static ControlButton Submit { get { return Instance.submit; } }
+        [SerializeField]
         ControlButton cancel;
         public static ControlButton Cancel { get { return Instance.cancel; } }
+        [SerializeField]
         ControlButton menu;
         public static ControlButton Menu { get { return Instance.menu; } }
 
@@ -64,7 +82,7 @@ namespace DaleranGames.IO
 
             fire = new ControlButton("Fire");
             ability = new ControlButton("Ability");
-            rcs = new ControlToggle("Brake", true);
+            rcs = new ControlToggle("RCS", true);
 
             submit = new ControlButton("Submit");
             cancel = new ControlButton("Cancel");
@@ -89,8 +107,11 @@ namespace DaleranGames.IO
             menu.CheckForPresses();
         }
 
+        [System.Serializable]
         public class MouseEvent
         {
+            [SerializeField]
+            [ReadOnly]
             int button;
             public event Action MouseButtonPressed;
             public event Action MouseButtonUp;
@@ -133,12 +154,14 @@ namespace DaleranGames.IO
                     MouseButtonUp();
             }
         }
-
+        [Serializable]
         public class ControlToggle
         {
+            [SerializeField]
             bool toggleState = false;
             public bool ToggleState { get { return toggleState; } }
 
+            [SerializeField]
             string axisName;
             public string AxisName { get { return axisName; } }
 
@@ -162,9 +185,10 @@ namespace DaleranGames.IO
             }
 
         }
-
+        [Serializable]
         public class ControlButton
         {
+            [SerializeField]
             string axisName;
             public string AxisName { get { return axisName; } }
 
@@ -204,9 +228,10 @@ namespace DaleranGames.IO
                     ControlButtonPressed();
             }
         }
-
+        [Serializable]
         public class ControlAxis
         {
+            [SerializeField]
             string axisName;
             public string AxisName { get { return axisName; } }
 
