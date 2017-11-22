@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 namespace UnityEngine
 {
 	[Serializable]
-	[CreateAssetMenu]
+	[CreateAssetMenu(fileName = "NewRuleTile", menuName = "Tiles and Brushes/Rule Tile", order = 360)]
 	public class RuleTile : TileBase
 	{
 		public Sprite m_DefaultSprite;

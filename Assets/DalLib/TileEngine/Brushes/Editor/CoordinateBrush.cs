@@ -26,7 +26,7 @@ namespace UnityEditor
             base.FloodFill(grid, brushTarget, zPosition);
         }
 
-        [MenuItem("Assets/Create/Coordinate Brush")]
+        [MenuItem("Assets/Create/Tiles and Brushes/Coordinate Brush")]
         public static void CreateBrush()
         {
             string path = EditorUtility.SaveFilePanelInProject("Save Coordinate Brush", "New Coordinate Brush", "asset", "Save Coordinate Brush", "Assets");
